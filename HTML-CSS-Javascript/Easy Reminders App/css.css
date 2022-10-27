@@ -1,0 +1,50 @@
+.hopline {
+    height: 3px;
+}
+table, td, th {
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    border-collapse: collapse;
+	table-layout: fixed;
+}
+th {
+	text-align: center;
+}
+.color {
+    background-color:lemonchiffon;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
+    width: 304px;
+}
+.dateline {
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
+}
+.centext {
+	text-align: center;
+}
+.wrap {
+  max-width: 15em;   
+  word-wrap: break-word;
+}
+.leftext {
+	text-align: left;
+}
+.rigtext {
+	text-align: right;
+}
+.fr {
+	float: right;
+}
+.fl {
+	float: left;
+}
+body {
+    font-family: arial, "times new roman", sans-serif;
+    font-size:13px;
+}
