@@ -1,0 +1,112 @@
+.nav-wrapper {
+    background-color: black;
+    height: 90px;
+}
+
+.nav-wrapper > .nav-logo {
+    float: left;
+    margin-right: 45px;
+    margin-left: 20px;
+}
+
+.nav-wrapper > .nav-logo img {
+    height: 5em;
+    filter: invert(100%);
+    object-fit: cover;
+}
+
+.nav-wrapper > .links-wrapper {
+    display: grid;
+    grid-template-rows: 40px 45px;;
+    justify-content: center;
+    float: left;
+    grid-gap: 10px;
+}
+
+.nav-wrapper > .links-wrapper > .links-explore {
+    color: #ffdd40;
+    font-family: sans-serif;
+    width: 100px;
+    padding-top: 25px;
+}
+
+.nav-wrapper > .links-wrapper > .nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: top center;
+    width: 350px;
+}
+
+.nav-wrapper > .links-wrapper > .nav-links > .nav-link a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 900;
+}
+
+.nav-wrapper > .spark-wrapper {
+    float: left;
+    margin-left: 45px;
+    text-align: center;
+    padding-top: 50px;
+    font-weight: 400;
+    width: 70px;
+}
+
+.nav-wrapper > .spark-wrapper > .spark-text {
+    float: left
+}
+
+.nav-wrapper > .spark-wrapper > .spark-text a {
+    color: gray;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.nav-wrapper > .spark-wrapper > .spark-icon {
+    color: gray;
+    float: right;
+    padding-top: 2px;
+}
+
+.nav-wrapper > .spark-wrapper > .spark-icon i {
+    color: gray;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.nav-wrapper > .login-options {
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 350px;
+    margin-right: 45px;
+    height: 100%;
+}
+
+.nav-wrapper > .login-options > .login-button button {
+    background-color: #5F5F5F;
+    color: white;
+    font-size: 1em;
+    padding: 15px;
+    border: 0px;
+    border-radius: 4px;
+    outline: none;
+    font-weight: 700;
+}
+
+.nav-wrapper > .login-options > .login-button button:hover {
+    background-color: #4D4D4D;
+}
+
+.nav-wrapper > .login-options > .login-button i {
+    color: lime;
+    font-size: 1.25em;
+    padding-left: 5px;
+}
+
+.nav-wrapper > .login-options > .login-icon {
+    color: gray;
+    font-size: 1.5em;
+}
