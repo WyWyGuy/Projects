@@ -1,0 +1,32 @@
+body {
+	text-align:center;
+}
+
+h1 {
+	color:darkgreen;
+}
+
+img {
+	border-width:2px;
+	border-style:solid;
+	border-color:black;
+}
+
+/*Not exactly sure this will work...*/
+
+a {
+	font-weight:bold;
+}
+
+a:hover {
+	color:red;
+}
+
+p {
+	margin-bottom:20px;
+	margin-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+	font-size:18px;
+	font-weight:bold;
+}

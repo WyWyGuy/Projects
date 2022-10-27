@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Forms</title>
+
+
+<style type="text/css" media="all">
+
+.form {
+	background-color:#DDDDDD;
+	width:500px;
+	padding-top:10px;
+	border-style:solid;
+	border-color:black;
+	border-width:1px;
+	font-family:"Times New Roman", serif;
+	font-size:16px;
+}
+
+.label {
+	width:100px;
+	text-align:right;
+	float:left;
+	padding:5px;
+	margin-right:20px;
+}
+
+.data {
+	text-align:left;
+	padding:5px;
+}
+
+.clear {
+	clear:both;
+}
+
+.button {
+	text-align:center;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+.tall {
+	height:60px;
+	padding-top:34px;
+}
+
+</style>
+
+
+
+</head>
+
+
+
+<body>
+<!-- PAGE CONTENT GOES HERE -->
+
+<h1>Forms</h1>
+
+<div class="form">
+
+<form action="Index.html" method="post">
+
+<div class="label">
+Full Name:
+</div>
+
+<div class="data">
+<input type="text" size="45" name="name" />
+</div>
+
+
+<div class="clear"></div>
+
+
+<div class="label tall">
+Year:
+</div>
+
+<div class="data">
+<input type="radio" name="year" value="freshman" /> Freshman<br/>
+<input type="radio" name="year" value="sophomore" /> Sophomore<br/>
+<input type="radio" name="year" value="junior" /> Junior<br/>
+<input type="radio" name="year" value="senior" /> Senior<br/>
+</div>
+
+
+<div class="clear"></div>
+
+
+<div class="label tall">
+Activities:
+</div>
+
+<div class="data">
+<input type="checkbox" name="activities"  value="sports" /> Sports<br/>
+<input type="checkbox" name="activities"  value="music" /> Music<br/>
+<input type="checkbox" name="activities"  value="theater" /> Theater<br/>
+<input type="checkbox" name="activities"  value="other" /> Other<br/>
+</div>
+
+
+<div class="clear"></div>
+
+
+<div class="label">
+Quarter:
+</div>
+
+<div class="data">
+<select name="quarter">
+<option value="spring">Spring</option>
+<option value="summer">Summer</option>
+<option value="fall">Fall</option>
+<option value="winter">Winter</option>
+</select>
+</div>
+
+
+<div class="clear"></div>
+
+
+<div class="label tall">
+Comments:
+</div>
+
+<div class="data">
+<textarea name="comments" rows="4" cols="35">
+Enter your comments here.
+</textarea>
+</div>
+
+
+<div class="clear"></div>
+
+
+<div class="button">
+<input type="submit" value="Click Here to Submit"/>
+</div>
+
+
+</form>
+</div>
+
+
+</body>
+
+</html>
