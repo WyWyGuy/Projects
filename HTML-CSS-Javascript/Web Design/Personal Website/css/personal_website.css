@@ -1,0 +1,235 @@
+/*Other colors for scheme are: Pink: #CE79D1, Yellow: #D1CE79*/
+body {
+	background-image:url('../images/background.jpg');
+}
+
+.header {
+	width:800px;
+	height:100px;
+	margin:0 auto;
+	color:#79d1ce;
+	text-align:center;
+	font-size:50px;
+	padding-top:20px;
+	font-family:castellar, david, serif;
+	font-weight:bold;
+}
+
+.backdrop {
+	background-image:url('../images/backdrop.png');
+	height:100px;
+	width:800px;
+}
+
+.navigation {
+	width:800px;
+	height:100px;
+	margin:0 auto;
+	font-family:castellar, david, serif;
+	color:#79d1ce;
+	font-weight:bold;
+}
+
+.body {
+	width:800px;
+	margin:0 auto;
+}
+
+.footer {
+	width:800px;
+	margin:0 auto;
+	height:36px;
+	text-align:center;
+	color:#79d1ce;
+	font-size:11px;
+	font-family:sans-serif;
+	color:#79d1ce;
+}
+
+.bar {
+	width:194px;
+	height:70px;
+	border: 3px solid #79d1ce;
+	float:left;
+	color:#79d1ce;
+	margin:0 auto;
+	text-align:center;
+	font-size:40px;
+	padding-top:15px;
+	color:#79d1ce;
+}
+
+a:link {
+	color:#79d1ce;
+	text-decoration:none;
+	font-size:30px;
+}
+
+a:visited {
+	color:#79d1ce;
+	text-decoration:none;
+	font-size:30px;
+}
+
+a:hover {
+	color:#FF0000;
+	text-decoration:none;
+	font-size:30px;
+}
+
+a:active {
+	color:#FF0000;
+	text-decoration:none;
+	font-size:30px;
+}
+
+.break {
+	height:600px;
+	width:800px;
+}
+
+.center {
+	text-align:center;
+	margin:0 auto;
+}
+
+.text {
+	font-family:serif;
+	color:#79d1ce;
+}
+
+.left {
+	float:left;
+}
+
+.right {
+	float:right;
+}
+
+.clear {
+	clear:both;
+}
+
+.enemy {
+	width:800px;
+	border-collapse:collapse;
+}
+
+.separate {
+	font-size:28px;
+	text-align:center;
+	font-family:castellar, david, serif;
+	color:#79d1ce;
+}
+
+td {
+	border-width:3px;
+	border-style:solid;
+	border-color:#79d1ce;
+	color:#79d1ce;
+	padding:7px;
+}
+
+.tabletop {
+	font-weight:bold;
+	text-align:center;
+	font-family:castellar, david, serif;
+	color:#79d1ce;
+}
+
+.whole {
+	margin:0 auto;
+	width:800px;
+}
+
+.font {
+	font-family:castellar, david, serif;
+	color:#79d1ce;
+}
+
+.font2 {
+	font-family:david, serif;
+	color:#79d1ce;
+}
+
+.color {
+	color:#79d1ce;
+}
+
+.return {
+	font-family:castellar, david, serif;
+	color:#79d1ce;
+}
+
+.big {
+	font-size:24px;
+}
+
+.big2 {
+	font-size:32px;
+}
+
+.bigger {
+	font-size:38px;
+}
+
+.subhead {
+	font-family:david, serif;
+	text-align:left;
+	font-size:40px;
+	color:#79d1ce;
+}
+
+.review {
+	background-image:url('../images/gradient400.png');
+	height:400px;
+	width:570px;
+	background-repeat:repeat-x;
+	background-size:contain;
+	margin:0 auto;
+}
+
+.button {
+	text-align:center;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+.data {
+	text-align:left;
+	float:right;
+	padding:5px;
+	color:#000000;
+	width:320px;
+	/*border:1px solid blue*/
+}
+
+.label {
+	width:200px;
+	text-align:right;
+	float:left;
+	padding:5px;
+	margin-right:20px;
+	color:#000000;
+	/*border:1px solid red*/
+}
+
+.formtop {
+	padding-top:22px;
+}
+
+.tall {
+	padding-top:47px;
+}
+
+.tall1-5 {
+	padding-top:5px;
+}
+
+.tall2 {
+	padding-top:75px;
+}
+
+.tall2-5 {
+	padding-top:25px;
+}
