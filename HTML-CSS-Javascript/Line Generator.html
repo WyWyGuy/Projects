@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Line Generator</title>
+
+<style type="text/css" media="all">
+
+.wrapless {
+  width:0px;
+  border:0px solid orange;
+}
+
+div.half {
+  height:150px;
+  width:7px;
+  border:1px solid green;
+  float:left;
+}
+
+div.box {
+  border:0px solid gray;
+  width:100px;
+  height:300px;
+  position:static;
+  float:left;
+}
+div.toptop:after {
+  content:"";
+  position:absolute;
+  border-top:1px solid red;
+  width:100px;
+  transform: translate(0px, 0px) rotate(0deg);
+  transform-origin: 0% 0%;
+  float:left;
+}
+
+div.topmid:after {
+  content:"";
+  position:absolute;
+  border-top:1px solid red;
+  width:180px;
+  transform: translate(0px, 0px) rotate(56deg);
+  transform-origin: 0% 0%;
+  float:left;
+}
+
+div.topbot:after {
+  content:"";
+  position:absolute;
+  border-top:1px solid red;
+  width:316px;
+  transform: translate(0px, 0px) rotate(71.5deg);
+  transform-origin: 0% 0%;
+  float:left;
+}
+
+div.midtop:after {
+  content:"";
+  position:absolute;
+  border-top:1px solid red;
+  width:180px;
+  transform: translate(0px, 150px) rotate(304deg);
+  transform-origin: 0% 0%;
+  float:left;
+}
+
+div.midmid:after {
+  content:"";
+  position:absolute;
+  border-top:1px solid red;
+  width:100px;
+  transform: translate(0px, 150px) rotate(0deg);
+  transform-origin: 0% 0%;
+  float:left;
+}
+
+div.midbot:after {
+  content:"";
+  position:absolute;
+  border-top:1px solid red;
+  width:180px;
+  transform: translate(0px, 150px) rotate(56deg);
+  transform-origin: 0% 0%;
+  float:left;
+}
+
+div.bottop:after {
+  content:"";
+  position:absolute;
+  border-top:1px solid red;
+  width:316px;
+  transform: translate(0px, 300px) rotate(288.5deg);
+  transform-origin: 0% 0%;
+  float:left;
+}
+
+div.botmid:after {
+  content:"";
+  position:absolute;
+  border-top:1px solid red;
+  width:180px;
+  transform: translate(0px, 300px) rotate(304deg);
+  transform-origin: 0% 0%;
+  float:left;
+}
+
+div.botbot:after {
+  content:"";
+  position:absolute;
+  border-top:1px solid red;
+  width:100px;
+  transform: translate(0px, 300px) rotate(0deg);
+  transform-origin: 0% 0%;
+  float:left;
+}
+
+</style>
+
+</head>
+
+
+<body>
+<!--316px with 71.55128476967878 degs (round 71.5) and 180px with 56.25101140411141 degs (round 56)-->
+<div class="wrapless" id="infinity">
+
+
+	
+</div>
+
+	<script>
+		
+		var add = "";
+		var longness = 0;
+		var start = String(Math.floor(Math.random() * 3) + 1);
+		var finish = String(Math.floor(Math.random() * 3) + 1);
+		var boxid = start + finish;
+		
+		if (boxid == '11') {
+			var boxname = "toptop";
+		}
+		
+		if (boxid == '12') {
+			var boxname = "topmid";
+		}
+		
+		if (boxid == '13') {
+			var boxname = "topbot";
+		}
+		
+		if (boxid == '21') {
+			var boxname = "midtop";
+		}
+		
+		if (boxid == '22') {
+			var boxname = "midmid";
+		}
+		
+		if (boxid == '23') {
+			var boxname = "midbot";
+		}
+		
+		if (boxid == '31') {
+			var boxname = "bottop";
+		}
+		
+		if (boxid == '32') {
+			var boxname = "botmid";
+		}
+		
+		if (boxid == '33') {
+			var boxname = "botbot";
+		}
+
+		longness = longness + 100;
+		document.getElementById('infinity').style.width = longness + "px";
+		add += "<div class='box " + boxname + "'></div>"
+		document.getElementById('infinity').innerHTML = add;
+
+		var loop = setInterval(function(){
+
+		start = finish;
+		finish = String(Math.floor(Math.random() * 3) + 1);
+		boxid = start + finish;
+		
+		if (boxid == '11') {
+			var boxname = "toptop";
+		}
+		
+		if (boxid == '12') {
+			var boxname = "topmid";
+		}
+		
+		if (boxid == '13') {
+			var boxname = "topbot";
+		}
+		
+		if (boxid == '21') {
+			var boxname = "midtop";
+		}
+		
+		if (boxid == '22') {
+			var boxname = "midmid";
+		}
+		
+		if (boxid == '23') {
+			var boxname = "midbot";
+		}
+		
+		if (boxid == '31') {
+			var boxname = "bottop";
+		}
+		
+		if (boxid == '32') {
+			var boxname = "botmid";
+		}
+		
+		if (boxid == '33') {
+			var boxname = "botbot";
+		}
+		
+		longness = longness + 100;
+		document.getElementById('infinity').style.width = longness + "px";
+		add += "<div class='box " + boxname + "'></div>"
+		document.getElementById('infinity').innerHTML = add;
+
+	}, 1000);
+	</script>
+	
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Unit Counter</title>
+
+
+<style type="text/css" media="all">
+
+.big {
+	text-align:right;
+}
+
+.small {
+	text-align:left;
+}
+
+.label {
+	width:125px;
+}
+
+.number {
+	width: 300px;
+}
+
+table {
+	border-collapse:collapse;
+}
+
+td {
+	border-color:black;
+	border-width:1px;
+	border-style:solid;
+}
+
+</style>
+
+
+
+</head>
+
+
+
+<body>
+
+	<input type="number" id="input" style="width:428px;"></input>
+	<br/><br/>
+	<div id="deleteme"><button onclick="count()">Count!</button></div>
+	<br/><br/>
+	
+	<table>
+		<tr>
+			<td class="label">Yottaseconds</td>
+			<td class="number big" id="yotta"></td>
+		</tr>
+		<tr>
+			<td class="label">Zettaseconds</td>
+			<td class="number big" id="zetta"></td>
+		</tr>
+		<tr>
+			<td class="label">Exaseconds</td>
+			<td class="number big" id="exa"></td>
+		</tr>
+		<tr>
+			<td class="label">Petaseconds</td>
+			<td class="number big" id="peta"></td>
+		</tr>
+		<tr>
+			<td class="label">Teraseconds</td>
+			<td class="number big" id="tera"></td>
+		</tr>
+		<tr>
+			<td class="label">Gigaseconds</td>
+			<td class="number big" id="giga"></td>
+		</tr>
+		<tr>
+			<td class="label">Megaseocnds</td>
+			<td class="number big" id="mega"></td>
+		</tr>
+		<tr>
+			<td class="label">Kiloseconds</td>
+			<td class="number big" id="kilo"></td>
+		</tr>
+		<tr>
+			<td class="label">Hectoseconds</td>
+			<td class="number big" id="hecto"></td>
+		</tr>
+		<tr>
+			<td class="label">Decaseconds</td>
+			<td class="number big" id="deca"></td>
+		</tr>
+		<tr>
+			<td class="label">Seconds</td>
+			<td class="number small" id="sec"></td>
+		</tr>
+		<tr>
+			<td class="label">Deciseconds</td>
+			<td class="number small" id="deci"></td>
+		</tr>
+		<tr>
+			<td class="label">Centiseconds</td>
+			<td class="number small" id="centi"></td>
+		</tr>
+		<tr>
+			<td class="label">Milliseconds</td>
+			<td class="number small" id="milli"></td>
+		</tr>
+		<tr>
+			<td class="label">Microseconds</td>
+			<td class="number small" id="micro"></td>
+		</tr>
+		<tr>
+			<td class="label">Nanoseconds</td>
+			<td class="number small" id="nano"></td>
+		</tr>
+		<tr>
+			<td class="label">Picoseconds</td>
+			<td class="number small" id="pico"></td>
+		</tr>
+		<tr>
+			<td class="label">Femtoseconds</td>
+			<td class="number small" id="femto"></td>
+		</tr>
+		<tr>
+			<td class="label">Attoseconds</td>
+			<td class="number small" id="atto"></td>
+		</tr>
+		<tr>
+			<td class="label">Zeptoseconds</td>
+			<td class="number small" id="zepto"></td>
+		</tr>
+		<tr>
+			<td class="label">Yoctoseconds</td>
+			<td class="number small" id="yocto"></td>
+		</tr>
+	</table>
+	
+	<script>
+		
+	function count() {
+	
+		var input = Number(document.getElementById('input').value * 100);
+		document.getElementById('deleteme').innerHTML = "";
+		
+			if (input > '0') {
+			var loop = setInterval(function(){
+			
+			input = input - 1;
+		
+		var yotta = (input * .00000000000000000000000001);
+		document.getElementById('yotta').innerHTML = yotta.toFixed(26);
+		var zetta = (input * .00000000000000000000001);
+		document.getElementById('zetta').innerHTML = zetta.toFixed(23);
+		var exa = (input * .00000000000000000001);
+		document.getElementById('exa').innerHTML = exa.toFixed(20);
+		var peta = (input * .00000000000000001);
+		document.getElementById('peta').innerHTML = peta.toFixed(17);
+		var tera = (input * .00000000000001);
+		document.getElementById('tera').innerHTML = tera.toFixed(14);
+		var giga = (input * .00000000001);
+		document.getElementById('giga').innerHTML = giga.toFixed(11);
+		var mega = (input * .00000001);
+		document.getElementById('mega').innerHTML = mega.toFixed(8);
+		var kilo = (input * .00001);
+		document.getElementById('kilo').innerHTML = kilo.toFixed(5);
+		var hecto = (input * .0001);
+		document.getElementById('hecto').innerHTML = hecto.toFixed(4);
+		var deca = (input * .001);
+		document.getElementById('deca').innerHTML = deca.toFixed(3);
+		var sec = (input * .01);
+		document.getElementById('sec').innerHTML = Math.round(sec);
+		var deci = (input * .1);
+		document.getElementById('deci').innerHTML = Math.round(deci);
+		var centi = (input * 1);
+		document.getElementById('centi').innerHTML = Math.round(centi);
+		var milli = (input * 10);
+		document.getElementById('milli').innerHTML = Math.round(milli);
+		var micro = (input * 10000);
+		document.getElementById('micro').innerHTML = Math.round(micro);
+		var nano = (input * 10000000);
+		document.getElementById('nano').innerHTML = Math.round(nano);
+		var pico = (input * 10000000000);
+		document.getElementById('pico').innerHTML = Math.round(pico);
+		var femto = (input * 10000000000000);
+		document.getElementById('femto').innerHTML = Math.round(femto);
+		var atto = (input * 10000000000000000);
+		document.getElementById('atto').innerHTML = Math.round(atto);
+		var zepto = (input * 10000000000000000000);
+		document.getElementById('zepto').innerHTML = Math.round(zepto);
+		var yocto = (input * 10000000000000000000000);
+		document.getElementById('yocto').innerHTML = Math.round(yocto);
+		
+			if (input <= 0) {clearInterval(loop);}
+		
+			}, 10);
+			}
+	}
+		
+	</script>
+
+</body>
+
+</html>

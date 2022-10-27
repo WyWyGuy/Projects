@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>MasterMind Online</title>
+
+<style type="text/css" media="all">
+
+.instructions {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.textboxes {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	background-color: #f5da42;
+	border: 3px dotted red;
+	padding: 7px;
+	width: 204px;
+	float: left;
+	margin-right: 25px;
+}
+
+.askbox {
+	width: 40px;
+}
+
+.bodystuff {
+	margin-left: 250px;
+	width: 188px;
+	border: 1px solid black;
+	text-align: center;
+	padding: 7px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+	
+	<div class="textboxes">
+		<p class="instructions">Type 4 numbers, each 1-6, to determine the code.<br/><br/>Use the feedback to adjust and crack the code in as few attempts as possible!<br/><br/>Red pegs are a correct number in the correct position.<br/><br/>White pegs are a correct number in the wrong position.</p>
+		<br/>
+		<input maxlength="1" onfocus="this.value=''" class="askbox" type="number" id="askpos1" min="1" max="6"></input>
+		<input maxlength="1" onfocus="this.value=''" class="askbox" type="number" id="askpos2" min="1" max="6"></input>
+		<input maxlength="1" onfocus="this.value=''" class="askbox" type="number" id="askpos3" min="1" max="6"></input>
+		<input maxlength="1" onfocus="this.value=''" class="askbox" type="number" id="askpos4" min="1" max="6"></input>
+		<br/><br/>
+		<div id="deleteme"><button style="width:188px;" onclick="ask()">Check Answer</button></div>
+	</div>
+	
+	<div class="bodystuff" id="response">
+	<div id="deletemetoo"><button style="width:188px;" onclick="forfeit()">Give Up?</button></div>
+	<br/><br/>
+	Tries: <br/><br/><br/>
+	</div>
+
+	<script>
+		
+		//declare variables and random answer
+		var anspos1 = Math.floor(Math.random() * 6) + 1;
+		var anspos2 = Math.floor(Math.random() * 6) + 1;
+		var anspos3 = Math.floor(Math.random() * 6) + 1;
+		var anspos4 = Math.floor(Math.random() * 6) + 1;
+		var askpos1 = 0;
+		var askpos2 = 0;
+		var askpos3 = 0;
+		var askpos4 = 0;
+		var redfeed = 0;
+		var whitefeed = 0;
+		var ispos1cor = 0;
+		var ispos2cor = 0;
+		var ispos3cor = 0;
+		var ispos4cor = 0;
+		var moves = 0;
+		var numof1 = 0;
+		var numof2 = 0;
+		var numof3 = 0;
+		var numof4 = 0;
+		var numof5 = 0;
+		var numof6 = 0;
+		var ansnumof1 = 0;
+		var ansnumof2 = 0;
+		var ansnumof3 = 0;
+		var ansnumof4 = 0;
+		var ansnumof5 = 0;
+		var ansnumof6 = 0;
+		
+		function ask() {
+			
+			//assign variables
+			askpos1 = document.getElementById('askpos1').value
+			askpos2 = document.getElementById('askpos2').value
+			askpos3 = document.getElementById('askpos3').value
+			askpos4 = document.getElementById('askpos4').value
+			
+			//reset variables
+			redfeed = 0;
+			whitefeed = 0;
+			ispos1cor = 0;
+			ispos2cor = 0;
+			ispos3cor = 0;
+			ispos4cor = 0;
+			numof1 = 0;
+			numof2 = 0;
+			numof3 = 0;
+			numof4 = 0;
+			numof5 = 0;
+			numof6 = 0;
+			ansnumof1 = 0;
+			ansnumof2 = 0;
+			ansnumof3 = 0;
+			ansnumof4 = 0;
+			ansnumof5 = 0;
+			ansnumof6 = 0;
+			
+			//Calculate the number of each color answers
+			if (anspos1 == 1) {
+				ansnumof1 += 1;
+			}
+			if (anspos1 == 2) {
+				ansnumof2 += 1;
+			}
+			if (anspos1 == 3) {
+				ansnumof3 += 1;
+			}
+			if (anspos1 == 4) {
+				ansnumof4 += 1;
+			}
+			if (anspos1 == 5) {
+				ansnumof5 += 1;
+			}
+			if (anspos1 == 6) {
+				ansnumof6 += 1;
+			}
+			if (anspos2 == 1) {
+				ansnumof1 += 1;
+			}
+			if (anspos2 == 2) {
+				ansnumof2 += 1;
+			}
+			if (anspos2 == 3) {
+				ansnumof3 += 1;
+			}
+			if (anspos2 == 4) {
+				ansnumof4 += 1;
+			}
+			if (anspos2 == 5) {
+				ansnumof5 += 1;
+			}
+			if (anspos2 == 6) {
+				ansnumof6 += 1;
+			}
+			if (anspos3 == 1) {
+				ansnumof1 += 1;
+			}
+			if (anspos3 == 2) {
+				ansnumof2 += 1;
+			}
+			if (anspos3 == 3) {
+				ansnumof3 += 1;
+			}
+			if (anspos3 == 4) {
+				ansnumof4 += 1;
+			}
+			if (anspos3 == 5) {
+				ansnumof5 += 1;
+			}
+			if (anspos3 == 6) {
+				ansnumof6 += 1;
+			}
+			if (anspos4 == 1) {
+				ansnumof1 += 1;
+			}
+			if (anspos4 == 2) {
+				ansnumof2 += 1;
+			}
+			if (anspos4 == 3) {
+				ansnumof3 += 1;
+			}
+			if (anspos4 == 4) {
+				ansnumof4 += 1;
+			}
+			if (anspos4 == 5) {
+				ansnumof5 += 1;
+			}
+			if (anspos4 == 6) {
+				ansnumof6 += 1;
+			}
+			
+			//count red pegs
+			if (askpos1 == anspos1) {
+				redfeed += 1;
+				ispos1cor = 1;
+			}
+			if (askpos2 == anspos2) {
+				redfeed += 1;
+				ispos2cor = 1;
+			}
+			if (askpos3 == anspos3) {
+				redfeed += 1;
+				ispos3cor = 1;
+			}
+			if (askpos4 == anspos4) {
+				redfeed += 1;
+				ispos4cor = 1;
+			}
+			
+			//remove ansnumof if it is correct
+			if (ispos1cor == 1) {
+				if (anspos1 == 1) {
+					ansnumof1--;
+				}
+				if (anspos1 == 2) {
+					ansnumof2--;
+				}
+				if (anspos1 == 3) {
+					ansnumof3--;
+				}
+				if (anspos1 == 4) {
+					ansnumof4--;
+				}
+				if (anspos1 == 5) {
+					ansnumof5--;
+				}
+				if (anspos1 == 6) {
+					ansnumof6--;
+				}
+			}
+			if (ispos2cor == 1) {
+				if (anspos2 == 1) {
+					ansnumof1--;
+				}
+				if (anspos2 == 2) {
+					ansnumof2--;
+				}
+				if (anspos2 == 3) {
+					ansnumof3--;
+				}
+				if (anspos2 == 4) {
+					ansnumof4--;
+				}
+				if (anspos2 == 5) {
+					ansnumof5--;
+				}
+				if (anspos2 == 6) {
+					ansnumof6--;
+				}
+			}
+			if (ispos3cor == 1) {
+				if (anspos3 == 1) {
+					ansnumof1--;
+				}
+				if (anspos3 == 2) {
+					ansnumof2--;
+				}
+				if (anspos3 == 3) {
+					ansnumof3--;
+				}
+				if (anspos3 == 4) {
+					ansnumof4--;
+				}
+				if (anspos3 == 5) {
+					ansnumof5--;
+				}
+				if (anspos3 == 6) {
+					ansnumof6--;
+				}
+			}
+			if (ispos4cor == 1) {
+				if (anspos4 == 1) {
+					ansnumof1--;
+				}
+				if (anspos4 == 2) {
+					ansnumof2--;
+				}
+				if (anspos4 == 3) {
+					ansnumof3--;
+				}
+				if (anspos4 == 4) {
+					ansnumof4--;
+				}
+				if (anspos4 == 5) {
+					ansnumof5--;
+				}
+				if (anspos4 == 6) {
+					ansnumof6--;
+				}
+			}
+			
+			//count how many of each color you have that isn't registered as a red peg
+			if (ispos1cor == 0) {
+				if (askpos1 == 1) {
+					numof1 += 1;
+				}
+				if (askpos1 == 2) {
+					numof2 += 1;
+				}
+				if (askpos1 == 3) {
+					numof3 += 1;
+				}
+				if (askpos1 == 4) {
+					numof4 += 1;
+				}
+				if (askpos1 == 5) {
+					numof5 += 1;
+				}
+				if (askpos1 == 6) {
+					numof6 += 1;
+				}
+			}
+			if (ispos2cor == 0) {
+				if (askpos2 == 1) {
+					numof1 += 1;
+				}
+				if (askpos2 == 2) {
+					numof2 += 1;
+				}
+				if (askpos2 == 3) {
+					numof3 += 1;
+				}
+				if (askpos2 == 4) {
+					numof4 += 1;
+				}
+				if (askpos2 == 5) {
+					numof5 += 1;
+				}
+				if (askpos2 == 6) {
+					numof6 += 1;
+				}
+			}
+			if (ispos3cor == 0) {
+				if (askpos3 == 1) {
+					numof1 += 1;
+				}
+				if (askpos3 == 2) {
+					numof2 += 1;
+				}
+				if (askpos3 == 3) {
+					numof3 += 1;
+				}
+				if (askpos3 == 4) {
+					numof4 += 1;
+				}
+				if (askpos3 == 5) {
+					numof5 += 1;
+				}
+				if (askpos3 == 6) {
+					numof6 += 1;
+				}
+			}
+			if (ispos4cor == 0) {
+				if (askpos4 == 1) {
+					numof1 += 1;
+				}
+				if (askpos4 == 2) {
+					numof2 += 1;
+				}
+				if (askpos4 == 3) {
+					numof3 += 1;
+				}
+				if (askpos4 == 4) {
+					numof4 += 1;
+				}
+				if (askpos4 == 5) {
+					numof5 += 1;
+				}
+				if (askpos4 == 6) {
+					numof6 += 1;
+				}
+			}
+			
+			//respond with how many white pegs you have
+			if (numof1 <= ansnumof1) {
+				whitefeed += numof1;
+			}
+			if (numof1 > ansnumof1) {
+				whitefeed += ansnumof1;
+			}
+			if (numof2 <= ansnumof2) {
+				whitefeed += numof2;
+			}
+			if (numof2 > ansnumof2) {
+				whitefeed += ansnumof2;
+			}
+			if (numof3 <= ansnumof3) {
+				whitefeed += numof3;
+			}
+			if (numof3 > ansnumof3) {
+				whitefeed += ansnumof3;
+			}
+			if (numof4 <= ansnumof4) {
+				whitefeed += numof4;
+			}
+			if (numof4 > ansnumof4) {
+				whitefeed += ansnumof4;
+			}
+			if (numof5 <= ansnumof5) {
+				whitefeed += numof5;
+			}
+			if (numof5 > ansnumof5) {
+				whitefeed += ansnumof5;
+			}
+			if (numof6 <= ansnumof6) {
+				whitefeed += numof6;
+			}
+			if (numof6 > ansnumof6) {
+				whitefeed += ansnumof6;
+			}
+
+			//return hints and count moves
+			moves += 1;
+			document.getElementById('response').innerHTML += askpos1 + " - " + askpos2 + " - " + askpos3 + " - " + askpos4 + "<br/>Red Pegs: " + redfeed + ", White Pegs: " + whitefeed + "<br/><br/>";
+			
+			//If you win
+			if (redfeed == 4) {
+			document.getElementById('response').innerHTML += "Congratulations, you won in " + moves + " tries!<br/>";
+			document.getElementById('deleteme').innerHTML = "";
+			document.getElementById('deletemetoo').innerHTML = "";
+			document.getElementById('response').innerHTML += "<button onclick='reload()'>Start Over</button>";
+			}
+		
+		}
+		
+		function reload() {
+			location.reload();
+		}
+		
+		function forfeit() {
+			document.getElementById('response').innerHTML += "You lose! The answer was:<br/>" + anspos1 + " - " + anspos2 + " - " + anspos3 + " - " + anspos4 + "<br/>";
+			document.getElementById('deleteme').innerHTML = "";
+			document.getElementById('deletemetoo').innerHTML = "";
+			document.getElementById('response').innerHTML += "<button onclick='reload()'>Start Over</button>";
+		}
+		
+	</script>
+	
+</body>
+
+</html>

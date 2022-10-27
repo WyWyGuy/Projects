@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Infinity Generator!</title>
+
+
+<style type="text/css" media="all">
+.broken {
+	word-break: break-all;
+}
+
+p {
+	font-family: arial;
+}
+</style>
+
+
+
+</head>
+
+
+
+<body>
+
+	<p>Generate This: <input type="text" onfocus="this.value=''" id="input"></p>
+	<p>Repeats: <input type="number" onfocus="this.value=''" id="repeats"> Infinite: <input type="checkbox" id="infinity"></p>
+	<p>Repeat Every<input type="number" onfocus="this.value=''" id="time" style="width: 50px;">seconds</p>
+	
+	<p id="button"><button type="button" onclick=generate()>Generate!</button></p>
+	
+	<p id ="return" class="broken"></p>
+	
+	<script>
+	
+	function generate() {
+		
+		document.getElementById('button').innerHTML = "";
+		var seconds = document.getElementById('time').value;
+		var repeats = document.getElementById('repeats').value;
+		var input = document.getElementById('input').value;
+		var text = "";
+		var forever = Number(document.getElementById('infinity').checked);
+
+
+
+		if (forever == '1') {
+			var loop = setInterval(function(){ 
+			text += input;
+			document.getElementById('return').innerHTML = text;
+			}, seconds * 1000);
+			}
+			
+		if (forever == '0') {
+			var loop = setInterval(function(){ 
+			text += input;
+			document.getElementById('return').innerHTML = text;
+			repeats = repeats - 1
+				if (repeats <= 0)
+				{clearInterval(loop);}
+			}, seconds * 1000);
+			}
+		
+	}
+	
+	</script>
+
+</body>
+
+</html>

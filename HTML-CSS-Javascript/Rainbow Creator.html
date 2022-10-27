@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Rainbow Creator</title>
+
+<style type="text/css" media="all">
+
+html, body {
+	margin: 0;
+}
+
+.entirepage {
+	width: 256px;
+}
+
+.box {
+	width: 1px;
+	height: 1px;
+	display: block;
+	float: left;
+}
+
+.grad {
+	width: 256px;
+	height: 1px;
+	display: block;
+	float: left;
+}
+
+</style>
+
+</head>
+
+
+<body>
+		
+	<div class="entirepage" id="therainbow">
+	</div>
+	
+	
+	<script>
+
+		var currentHexColor = 0;
+		var currentColor = 0;
+		var thisthing = "";
+		var halfthing = "";
+		var oldhalfthing = "";
+		var fullthing = "";
+		var gradient = "";
+		var i = 0;
+		var endColor = 0;
+		var startColor = 0;
+		
+		var loop = setInterval(function(){
+//Make the hex code and make it 6 digits long
+				currentHexColor = currentColor.toString(16);
+					
+					if (currentHexColor.length < 6) {
+						do {
+							currentHexColor = "0" + currentHexColor;
+						} while (currentHexColor.length < 6);
+					}
+					
+					if (i == 0) {
+						startColor = currentHexColor;
+					}
+//Add a 1x1 span of that color
+				thisthing = "<span class='box' style='background-color: #" + currentHexColor + ";'></span>";
+				halfthing += thisthing;
+				fullthing += thisthing;
+				document.getElementById('therainbow').innerHTML = fullthing;
+//Update the counter
+				currentColor = currentColor + 1;
+				i++;
+//If max color reached, break a new line
+				if (i >= 256) {
+					endColor = currentHexColor;
+					gradient = "<span class='grad' style='background-image: linear-gradient(to right, #" + startColor + " , #" + endColor + ");'></span>";	
+					fullthing = fullthing.replace(halfthing, gradient);
+					document.getElementById('therainbow').innerHTML = fullthing;
+					i = 0;
+					halfthing = "";
+				}
+//If all the colors are done, end it
+				if (currentColor > 16777215) {
+					clearInterval(loop);
+				}
+		}, 10);
+		
+	</script>
+	
+</body>
+
+</html>

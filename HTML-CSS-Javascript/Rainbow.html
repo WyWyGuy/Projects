@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Rainbow</title>
+
+<style type="text/css" media="all">
+
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
+.entirepage {
+	height: 100%;
+	width: 100%;
+	background-color: red;
+}
+
+</style>
+
+</head>
+
+
+<body>
+	
+	<div class="entirepage" id="therainbow"></div>
+	
+
+	<script>
+
+		var rainbow = document.querySelector('#therainbow');		
+		var currentHexColor = 0;
+		var currentColor = 0;
+		
+		var loop = setInterval(function(){
+				currentHexColor = currentColor.toString(16);
+					
+					if (currentHexColor.length < 6) {
+						do {
+							currentHexColor = "0" + currentHexColor;
+						} while (currentHexColor.length < 6);
+					}
+
+				rainbow.style.backgroundColor = "#" + currentHexColor;
+				currentColor = currentColor + 1;
+				
+				if (currentColor > 16777215) {
+					currentColor = 0;
+					var cycleCompleted = true;
+				}
+		}, 10);
+		
+	</script>
+	
+</body>
+
+</html>

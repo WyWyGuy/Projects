@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Quadratic Calculator</title>
+
+
+<style type="text/css" media="all">
+
+</style>
+
+
+
+</head>
+
+
+
+<body>
+
+	<p>a: <input type="number" onfocus="this.value=''" id="inputa"></p>
+	<p>b: <input type="number" onfocus="this.value=''" id="inputb"></p>
+	<p>c: <input type="number" onfocus="this.value=''" id="inputc"></p>
+	<button type="button" onclick=calculate()>Calculate</button>
+<br/>
+<br/>
+	<p id="answer"></p>
+	
+	<script>
+	function calculate() {
+	var a = document.getElementById('inputa').value;
+	var b = document.getElementById('inputb').value;
+	var c = document.getElementById('inputc').value;
+	var bsquare = b * b;
+	var fourac = 4 * a * c;
+	var inside = bsquare - fourac;
+	var root = Math.sqrt(inside);
+	var negb = 0 - b;
+	var topone = negb + root;
+	var toptwo = negb - root;
+	var bottom = 2 * a;
+	var plus = topone / bottom;
+	var minus = toptwo / bottom;
+	document.getElementById('answer').innerHTML = plus + " and " + minus;
+	}
+	</script>
+
+</body>
+
+</html>

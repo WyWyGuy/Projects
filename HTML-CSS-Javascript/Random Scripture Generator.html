@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Scripture Generator</title>
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style type="text/css" media="all">
+
+	.center {
+		margin: 0 auto;
+		text-align: center;
+	}
+	
+	body {
+		background-color:#011538;
+		margin: 15px;
+	}
+	
+	.outputs {
+		font-family: "Times New Roman", serif;
+		color: #dbd781;
+		font-size: 25px;
+		margin-top: 15px;
+		font-weight: 50%;
+		text-decoration:none;
+	}
+	
+	.outputs:hover {
+		text-decoration:underline;
+	}
+	
+	.smaller {
+		font-size: 20px;
+	}
+	
+	.buttonObject {
+		background-color: #ded85b;
+		border: 3px solid #ded85b;
+		font-size: 30px;
+		margin-top: 17px;
+		margin-bottom:30px;
+		border-radius:8px;
+		padding:16px;
+		font-weight: bold;
+		color: #011538;
+		font-family: 'Dancing Script', cursive;
+		transition-duration: 0.4s;
+		outline: none;
+	}
+	
+	.buttonObject:hover {
+		background-color: #011538;
+		color: #ded85b;
+	}
+
+</style>
+
+</head>
+
+
+<body>
+	
+	<div class="center"><button class="buttonObject" type="button" onclick=choose()>Generate Scripture</button></div>
+	<div class="center outputs" id="output1"></div>
+	<div class="center outputs" id="output2"></div>
+	
+
+	<script>
+		
+		//Old Testament number of verses
+		var gen = [31, 25, 24, 26, 32, 22, 24, 22, 29, 32, 32, 20, 18, 24, 21, 16, 27, 33, 38, 18, 34, 24, 20, 67, 34, 35, 46, 22, 35, 43, 55, 32, 20, 31, 29, 43, 36, 30, 23, 23, 57, 38, 34, 34, 28, 34, 31, 22, 33, 26];
+		var ex = [22, 25, 22, 31, 23, 30, 25, 32, 35, 29, 10, 51, 22, 31, 27, 36, 16, 27, 25, 26, 36, 31, 33, 18, 40, 37, 21, 43, 46, 38, 18, 35, 23, 35, 35, 38, 29, 31, 43, 38];
+		var lev = [17, 16, 17, 35, 19, 30, 38, 36, 24, 20, 47, 8, 59, 57, 33, 34, 16, 30, 37, 27, 24, 33, 44, 23, 55, 46, 34];
+		var num = [54, 34, 51, 49, 31, 27, 89, 26, 23, 36, 35, 16, 33, 45, 41, 50, 13, 32, 22, 29, 35, 41, 30, 25, 18, 65, 23, 31, 40, 16, 54, 42, 56, 29, 34, 13];
+		var deut = [46, 37, 29, 49, 33, 25, 26, 20, 29, 22, 32, 32, 18, 29, 23, 22, 20, 22, 21, 20, 23, 30, 25, 22, 19, 19, 26, 68, 29, 20, 30, 52, 29, 12];
+		var josh = [18, 24, 17, 24, 15, 27, 26, 35, 27, 43, 23, 24, 33, 15, 63, 10, 18, 28, 51, 9, 45, 34, 16, 33];
+		var judg = [36, 23, 31, 24, 31, 40, 25, 35, 57, 18, 40, 15, 25, 20, 20, 31, 13, 31, 30, 48, 25];
+		var ruth = [22, 23, 18, 22];
+		var sam1 = [28, 36, 21, 22, 12, 21, 17, 22, 27, 27, 15, 25, 23, 52, 35, 23, 58, 30, 24, 42, 15, 23, 29, 22, 44, 25, 12, 25, 11, 31, 13];
+		var sam2 = [27, 32, 39, 12, 25, 23, 29, 18, 13, 19, 27, 31, 39, 33, 37, 23, 29, 33, 43, 26, 22, 51, 39, 25];
+		var kgs1 = [53, 46, 28, 34, 18, 38, 51, 66, 28, 29, 43, 33, 34, 31, 34, 34, 24, 46, 21, 43, 29, 53];
+		var kgs2 = [18, 25, 27, 44, 27, 33, 20, 29, 37, 36, 21, 21, 25, 29, 38, 20, 41, 37, 37, 21, 26, 20, 37, 20, 30];
+		var chr1 = [54, 55, 24, 43, 26, 81, 40, 40, 44, 14, 47, 40, 14, 17, 29, 43, 27, 17, 19, 8, 30, 19, 32, 31, 31, 32, 34, 21, 30];
+		var chr2 = [17, 18, 17, 22, 14, 42, 22, 18, 31, 19, 23, 16, 22, 15, 19, 14, 19, 34, 11, 37, 20, 12, 21, 27, 28, 23, 9, 27, 36, 27, 21, 33, 25, 33, 27, 23];
+		var ezra = [11, 70, 13, 24, 17, 22, 28, 36, 15, 44];
+		var neh = [11, 20, 32, 23, 19, 19, 73, 18, 38, 39, 36, 47, 31];
+		var esth = [22, 23, 15, 17, 14, 14, 10, 17, 32, 3];
+		var job = [22, 13, 26, 21, 27, 30, 21, 22, 35, 22, 20, 25, 28, 22, 35, 22, 16, 21, 29, 29, 34, 30, 17, 25, 6, 14, 23, 28, 25, 31, 40, 22, 33, 37, 16, 33, 24, 41, 30, 24, 34, 17];
+		var ps = [6, 12, 8, 8, 12, 10, 17, 9, 20, 18, 7, 8, 6, 7, 5, 11, 15, 50, 14, 9, 13, 31, 6, 10, 22, 12, 14, 9, 11, 12, 24, 11, 22, 22, 28, 12, 40, 22, 13, 17, 13, 11, 5, 26, 17, 11, 9, 14, 20, 23, 19, 9, 6, 7, 23, 13, 11, 11, 17, 12, 8, 12, 11, 10, 13, 20, 7, 35, 36, 5, 24, 20, 28, 23, 10, 12, 20, 72, 13, 19, 16, 8, 18, 12, 13, 17, 7, 18, 52, 17, 16, 15, 5, 23, 11, 13, 12, 9, 9, 5, 8, 28, 22, 35, 45, 48, 43, 13, 31, 7, 10, 10, 9, 8, 18, 19, 2, 29, 176, 7, 8, 9, 4, 8, 5, 6, 5, 6, 8, 8, 3, 18, 3, 3, 21, 26, 9, 8, 24, 13, 10, 7, 12, 15, 21, 10, 20, 14, 9, 6];
+		var prov = [33, 22, 35, 27, 23, 35, 27, 36, 18, 32, 31, 28, 25, 35, 33, 33, 28, 24, 29, 30, 31, 29, 35, 34, 28, 28, 27, 28, 27, 33, 31];
+		var eccl = [18, 26, 22, 16, 20, 12, 29, 17, 18, 20, 10, 14];
+		var song = [17, 17, 11, 16, 16, 13, 13, 14];
+		var isa = [31, 22, 26, 6, 30, 13, 25, 22, 21, 34, 16, 6, 22, 32, 9, 14, 14, 7, 25, 6, 17, 25, 18, 23, 12, 21, 13, 29, 24, 33, 9, 20, 24, 17, 10, 22, 38, 22, 8, 31, 29, 25, 28, 28, 25, 13, 15, 22, 26, 11, 23, 15, 12, 17, 13, 12, 21, 14, 21, 22, 11, 12, 19, 12, 25, 24];
+		var jer = [19, 37, 25, 31, 31, 30, 34, 22, 26, 25, 23, 17, 27, 22, 21, 21, 27, 23, 15, 18, 14, 30, 40, 10, 38, 24, 22, 17, 32, 24, 40, 44, 26, 22, 19, 32, 21, 28, 18, 16, 18, 22, 13, 30, 5, 28, 7, 47, 39, 46, 64, 34];
+		var lam = [22, 22, 66, 22, 22];
+		var ezek = [28, 10, 27, 17, 17, 14, 27, 18, 11, 22, 25, 28, 23, 23, 8, 63, 24, 32, 14, 49, 32, 31, 49, 27, 17, 21, 36, 26, 21, 26, 18, 32, 33, 31, 15, 38, 28, 23, 29, 49, 26, 20, 27, 31, 25, 24, 23, 35];
+		var dan = [21, 49, 30, 37, 31, 28, 28, 27, 27, 21, 45, 13];
+		var hosea = [11, 23, 5, 19, 15, 11, 16, 14, 17, 15, 12, 14, 16, 9];
+		var joel = [20, 32, 21];
+		var amos = [15, 16, 15, 13, 27, 14, 17, 14, 15];
+		var obad = [21];
+		var jonah = [17, 10, 10, 11];
+		var micah = [16, 13, 12, 13, 15, 16, 20];
+		var nahum = [15, 13, 19];
+		var hab = [17, 20, 19];
+		var zeph = [18, 15, 20];
+		var hag = [15, 23];
+		var zech = [21, 13, 10, 14, 11, 15, 14, 23, 17, 12, 17, 14, 9, 21];
+		var mal = [14, 17, 18, 6];
+		
+		//New Testament number of verses
+		var matt = [25, 23, 17, 25, 48, 34, 29, 34, 38, 42, 30, 50, 58, 36, 39, 28, 27, 35, 30, 34, 46, 46, 39, 51, 46, 75, 66, 20];
+		var mark = [45, 28, 35, 41, 43, 56, 37, 38, 50, 52, 33, 44, 37, 72, 47, 20];
+		var luke = [80, 52, 38, 44, 39, 49, 50, 56, 62, 42, 54, 59, 35, 35, 32, 31, 37, 43, 48, 47, 38, 71, 56, 53];
+		var john = [51, 25, 36, 54, 47, 71, 53, 59, 41, 42, 57, 50, 38, 31, 27, 33, 26, 40, 42, 31, 25];
+		var acts = [26, 47, 26, 37, 42, 15, 60, 40, 43, 48, 30, 25, 52, 28, 41, 40, 34, 28, 41, 38, 40, 30, 35, 27, 27, 32, 44, 31];
+		var rom = [32, 29, 31, 25, 21, 23, 25, 39, 33, 21, 36, 21, 14, 23, 33, 27];
+		var cor1 = [31, 16, 23, 21, 13, 20, 40, 13, 27, 33, 34, 31, 13, 40, 58, 24];
+		var cor2 = [24, 17, 18, 18, 21, 18, 16, 24, 15, 18, 33, 21, 14];
+		var gal = [24, 21, 29, 31, 26, 18];
+		var eph = [23, 22, 21, 32, 33, 24];
+		var philip = [30, 30, 21, 23];
+		var col = [29, 23, 25, 18];
+		var thes1 = [10, 20, 13, 18, 28];
+		var thes2 = [12, 17, 18];
+		var tim1 = [20, 15, 16, 16, 25, 21];
+		var tim2 = [18, 26, 17, 22];
+		var titus = [16, 15, 15];
+		var philem = [25];
+		var heb = [14, 18, 19, 16, 14, 20, 28, 13, 28, 39, 40, 29, 25];
+		var james = [27, 26, 18, 17, 20];
+		var pet1 = [25, 25, 22, 19, 14];
+		var pet2 = [21, 22, 18];
+		var jn1 = [10, 29, 24, 21, 21];
+		var jn2 = [13]
+		var jn3 = [14];
+		var jude = [25];
+		var rev = [20, 29, 22, 11, 14, 17, 17, 13, 21, 11, 19, 17, 18, 20, 8, 21, 18, 24, 21, 15, 27, 21];
+		
+		//Book of Mormon chapters (with how many verses)
+		var ne1 = [20, 24, 31, 38, 22, 6, 22, 38, 6, 22, 36, 23, 42, 30, 36, 39, 55, 25, 24, 22, 26, 31];
+		var ne2 = [32, 30, 25, 35, 34, 18, 11, 25, 54, 25, 8, 22, 26, 6, 30, 13, 25, 22, 21, 34, 16, 6, 22, 32, 30, 33, 35, 32, 14, 18, 21, 9, 15];
+		var jacob = [19, 35, 14, 18, 77, 13, 27];
+		var enos = [27];
+		var jarom = [15];
+		var omni = [30];
+		var wofm = [18];
+		var mosiah = [18, 41, 27, 30, 15, 7, 33, 21, 19, 22, 29, 37, 35, 12, 31, 15, 20, 35, 29, 26, 36, 16, 39, 25, 24, 39, 37, 20, 47];
+		var alma = [33, 38, 27, 20, 62, 8, 27, 32, 34, 32, 46, 37, 31, 29, 19, 21, 39, 43, 36, 30, 23, 35, 18, 30, 17, 37, 30, 14, 17, 60, 38, 43, 23, 41, 16, 30, 47, 15, 19, 26, 15, 31, 54, 24, 41, 36, 25, 30, 40, 37, 40, 23, 24, 35, 57, 36, 41, 13, 36, 21, 52, 17];
+		var hel = [34, 14, 37, 26, 52, 41, 29, 28, 41, 19, 38, 26, 39, 31, 17, 25];
+		var ne3 = [30, 19, 26, 33, 26, 30, 26, 25, 22, 19, 41, 48, 34, 27, 24, 20, 25, 39, 36, 46, 29, 17, 14, 18, 6, 21, 33, 40, 9, 2];
+		var ne4 = [49];
+		var morm = [19, 29, 22, 23, 24, 22, 10, 41, 37];
+		var ether = [43, 25, 28, 19, 6, 30, 27, 26, 35, 34, 23, 41, 31, 31, 34];
+		var moro = [4, 3, 4, 3, 2, 9, 48, 30, 26, 34];
+		
+		//Doctrine and Covenants number of verses
+		var dnc = [39, 3, 20, 7, 35, 37, 8, 12, 14, 70, 30, 9, 1, 11, 6, 6, 9, 47, 41, 84, 12, 4, 7, 19, 16, 2, 18, 16, 50, 11, 13, 5, 18, 12, 27, 8, 4, 42, 24, 3, 12, 93, 35, 6, 75, 33, 4, 6, 28, 46, 20, 44, 7, 10, 6, 20, 16, 65, 24, 17, 39, 9, 66, 43, 6, 13, 14, 35, 8, 18, 11, 26, 6, 7, 36, 119, 15, 22, 4, 5, 7, 24, 6, 120, 12, 11, 8, 141, 21, 37, 6, 2, 53, 17, 17, 9, 28, 48, 8, 17, 101, 34, 40, 86, 41, 8, 100, 8, 80, 16, 11, 34, 10, 2, 19, 1, 16, 6, 7, 1, 46, 9, 17, 145, 4, 3, 12, 25, 9, 23, 8, 66, 74, 12, 7, 42, 10, 60, 1, 1];
+		
+		//Pearl of Great Price number of verses
+		var moses = [42, 31, 25, 32, 59, 68, 69, 30];
+		var abr = [31, 25, 28, 31, 21, 1, 1, 1];
+		var jsm = [55];
+		var jsh = [75];
+		var aoff = [13];
+		
+		//Books in each work
+		var ot = {'gen':gen, 'ex':ex, 'lev':lev, 'num':num, 'deut':deut, 'josh':josh, 'judg':judg, 'ruth':ruth, 'sam1':sam1, 'sam2':sam2, 'kgs1':kgs1, 'kgs2':kgs2, 'chr1':chr1, 'chr2':chr2, 'ezra':ezra, 'neh':neh, 'esth':esth, 'job':job, 'ps':ps, 'prov':prov, 'eccl':eccl, 'song':song, 'isa':isa, 'jer':jer, 'lam':lam, 'ezek':ezek, 'dan':dan, 'hosea':hosea, 'joel':joel, 'amos':amos, 'obad':obad, 'jonah':jonah, 'micah':micah, 'nahum':nahum, 'hab':hab, 'zeph':zeph, 'hag':hag, 'zech':zech, 'mal':mal};
+		var nt = {'matt':matt, 'mark':mark, 'luke':luke, 'john':john, 'acts':acts, 'rom':rom, 'cor1':cor1, 'cor2':cor2, 'gal':gal, 'eph':eph, 'philip':philip, 'col':col, 'thes1':thes1, 'thes2':thes2, 'tim1':tim1, 'tim2':tim2, 'titus':titus, 'philem':philem, 'heb':heb, 'james':james, 'pet1':pet1, 'pet2':pet2, 'jn1':jn1, 'jn2':jn2, 'jn3':jn3, 'jude':jude, 'rev':rev};
+		var bom = {'ne1':ne1, 'ne2':ne2, 'jacob':jacob, 'enos':enos, 'jarom':jarom, 'omni':omni, 'wofm':wofm, 'mosiah':mosiah, 'alma':alma, 'hel':hel, 'ne3':ne3, 'ne4':ne4, 'morm':morm, 'ether':ether, 'moro':moro};
+		var dnc = {'dnc':dnc};
+		var pogp = {'moses':moses, 'abr':abr, 'jsm':jsm, 'jsh':jsh, 'aoff':aoff};
+		var booksDisplay = {gen:'Genesis', ex:'Exodus', lev:'Leviticus', num:'Numbers', deut:'Deuteronomy', josh:'Joshua', judg:'Judges', ruth:'Ruth', sam1:'1 Samuel', sam2:'2 Samuel', kgs1:'1 Kings', kgs2:'2 Kings', chr1:'1 Chronicles', chr2:'2 Chronicles', ezra:'Ezra', neh:'Nehemiah', esth:'Esther', job:'Job', ps:'Psalms', prov:'Proverbs', eccl:'Ecclesiastes', song:'Song of Solomon', isa:'Isaiah', jer:'Jeremiah', lam:'Lamentations', ezek:'Ezekiel', dan:'Daniel', hosea:'Hosea', joel:'Joel', amos:'Amos', obad:'Obadiah', jonah:'Jonah', micah:'Micah', nahum:'Nahum', hab:'Habakkuk', zeph:'Zephaniah', hag:'Haggai', zech:'Zechariah', mal:'Malachi', matt:'Matthew', mark:'Mark', luke:'Luke', john:'John', acts:'Acts', rom:'Romans', cor1:'1 Corinthians', cor2:'2 Corinthians', gal:'Galatians', eph:'Ephesians', philip:'Philippians', col:'Colossians', thes1:'1 Thessalonians', thes2:'2 Thessalonians', tim1:'1 Timothy', tim2:'2 Timothy', titus:'Titus', philem:'Philemon', heb:'Hebrews', james:'James', pet1:'1 Peter', pet2:'2 Peter', jn1:'1 John', jn2:'2 John', jn3:'3 John', jude:'Jude', rev:'Revelation', ne1:'1 Nephi', ne2:'2 Nephi', jacob:'Jacob', enos:'Enos', jarom:'Jarom', omni:'Omni', wofm:'Words of Mormon', mosiah:'Mosiah', alma:'Alma', hel:'Helaman', ne3:'3 Nephi', ne4:'4 Nephi', morm:'Mormon', ether:'Ether', moro:'Moroni', dnc:'Doctrine and Covenants', od:'Official Declaration', moses:'Moses', abr:'Abraham', jsm:'Joseph Smith - Matthew', jsh:'Joseph Smith - History', aoff:'Articles of Faith'};
+		
+		//Standard Works
+		var works = {'ot':ot, 'nt':nt, 'bom':bom, 'dnc':dnc, 'pogp':pogp};
+		var worksDisplay = {ot:'Old Testament', nt:'New Testament', bom:'Book of Mormon', dnc:'Doctrine & Covenants', pogp:'Pearl of Great Price'};
+		
+		
+		
+		function choose() {
+		
+			//Clear output
+			document.getElementById('output1').innerHTML = "";
+			document.getElementById('output2').innerHTML = "";
+			
+			//Declare variables
+			var work;
+			var workDisplay;
+			var book;
+			var bookDisplay;
+			var chapter;
+			var chapterDisplay;
+			var verse;
+			var verseDisplay;
+			
+			//Get work
+			var workskeys = Object.keys(works);
+			workName = workskeys[Math.floor(Math.random() * workskeys.length)];
+			work = works[workName];
+			workDisplay = worksDisplay[workName];
+			
+			//Get book
+			var bookkeys = Object.keys(work);
+			bookName = bookkeys[Math.floor(Math.random() * bookkeys.length)];
+			book = work[bookName];
+			bookDisplay = booksDisplay[bookName];
+			
+			//Get chapter
+			chapter = Math.floor(Math.random() * book.length) + 1;
+			chapterDisplay = chapter;
+			
+			//Get verse
+			verse = Math.floor(Math.random() * (book[chapter - 1])) + 1;
+			verseDisplay = verse;
+			
+			//Get correct abbreviations for church website
+			if (workName == 'bom') {
+				workName = 'bofm';
+			}
+			if (workName == 'dnc') {
+				workName = 'dc-testament';
+			}
+			if (bookName == 'dnc') {
+				if (chapter == '139') {
+					bookName = 'od';
+					chapter = '1';
+					bookDisplay = 'Official Declaration';
+					chapterDisplay = '1';
+				}
+			}
+			if (bookName == 'dnc') {
+				if (chapter == '140') {
+					bookName = 'od';
+					chapter = '2';
+					bookDisplay = 'Official Declaration';
+					chapterDisplay = '2';
+				}
+			}
+			if (workName == 'pogp') {
+				workName = 'pgp';
+			}
+			if (bookName == 'sam1') {
+				bookName = '1-sam';
+			}
+			if (bookName == 'sam2') {
+				bookName = '2-sam';
+			}
+			if (bookName == 'kgs1') {
+				bookName = '1-kgs';
+			}
+			if (bookName == 'kgs2') {
+				bookName = '2-kgs';
+			}
+			if (bookName == 'chr1') {
+				bookName = '1-chr';
+			}
+			if (bookName == 'chr2') {
+				bookName = '2-chr';
+			}
+			if (bookName == 'cor1') {
+				bookName = '1-cor';
+			}
+			if (bookName == 'cor2') {
+				bookName = '2-cor';
+			}
+			if (bookName == 'thes1') {
+				bookName = '1-thes';
+			}
+			if (bookName == 'thes2') {
+				bookName = '2-thes';
+			}
+			if (bookName == 'tim1') {
+				bookName = '1-tim';
+			}
+			if (bookName == 'tim2') {
+				bookName = '2-tim';
+			}
+			if (bookName == 'pet1') {
+				bookName = '1-pet';
+			}
+			if (bookName == 'pet2') {
+				bookName = '2-pet';
+			}
+			if (bookName == 'jn1') {
+				bookName = '1-jn';
+			}
+			if (bookName == 'jn2') {
+				bookName = '2-jn';
+			}
+			if (bookName == 'jn3') {
+				bookName = '3-jn';
+			}
+			if (bookName == 'ne1') {
+				bookName = '1-ne';
+			}
+			if (bookName == 'ne2') {
+				bookName = '2-ne';
+			}
+			if (bookName == 'wofm') {
+				bookName = 'w-of-m';
+			}
+			if (bookName == 'ne3') {
+				bookName = '3-ne';
+			}
+			if (bookName == 'ne4') {
+				bookName = '4-ne';
+			}
+			if (bookName == 'dnc') {
+				bookName = 'dc';
+			}
+			if (bookName == 'jsm') {
+				bookName = 'js-m';
+			}
+			if (bookName == 'jsh') {
+				bookName = 'js-h';
+			}
+			if (bookName == 'aoff') {
+				bookName = 'a-of-f';
+			}
+			if (bookName == 'abr') {
+				if (chapter == 6) {
+					chapter = 'fac-1';
+				}
+			}
+			if (bookName == 'abr') {
+				if (chapter == 7) {
+					chapter = 'fac-2';
+				}
+			}
+			if (bookName == 'abr') {
+				if (chapter == 8) {
+					chapter = 'fac-3';
+				}
+			}
+			
+			//Output
+			if (bookName == 'od') {
+				document.getElementById('output1').innerHTML = "<a class='outputs' target='_blank' href='https://www.churchofjesuschrist.org/study/scriptures/" + workName + "/" + bookName + "/" + chapter + "?lang=eng" + "'>" + bookDisplay + " " + chapterDisplay + "</a>";
+			} else {
+				document.getElementById('output1').innerHTML = "<a class='outputs' target='_blank' href='https://www.churchofjesuschrist.org/study/scriptures/" + workName + "/" + bookName + "/" + chapter + "?lang=eng&id=" + verse + "#p" + verse + "'>" + bookDisplay + " " + chapterDisplay + ":" + verseDisplay + "</a>";
+			}
+			document.getElementById('output2').innerHTML = "<a class='outputs smaller' target='_blank' href='https://www.churchofjesuschrist.org/study/scriptures/" + workName + "?lang=eng'>" + workDisplay + "</a>";
+						
+			/*
+			document.getElementById('output1').innerHTML = "Work: " + work + ", Book: " + book + ", Chapter: " + chapter + ", Verse: " + verse;
+			document.getElementById('output2').innerHTML += "<br/>Work: " + workDisplay + ", Book: " + bookDisplay;
+			*/
+			
+		}
+		
+	</script>
+	
+</body>
+
+</html>

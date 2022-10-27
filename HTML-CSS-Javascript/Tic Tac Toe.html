@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Tic Tac Toe</title>
+
+
+<style type="text/css" media="all">
+
+h2.whosturn {
+	float:left;
+}
+
+.box {
+	border-width:4px;
+	border-style:solid;
+	border-color:black;
+	height:100px;
+	width:100px;
+	text-align:center;
+	float:left;
+}
+
+.board {
+	border-width:4px;
+	border-style:solid;
+	border-color:black;
+	height:324px;
+	width:324px;
+	margin: 0 auto;
+	text-align:center;
+}
+
+h2.instructions {
+	text-align:center;
+}
+
+p.instructions {
+	text-align:center;
+}
+
+div.instructions {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.cardback {
+	height:100px;
+	width:100px;
+	background-color:white;
+}
+
+</style>
+
+
+
+</head>
+
+
+
+<body>
+
+<h2 class="whosturn">
+Next Turn: <p class="nextperson" id="nextplayer"></p>
+</h2>
+
+<div class="board">
+
+<div class="box"><div id="card1" class="cardback off" onclick=cardclicked(1)></div></div>
+<div class="box"><div id="card2" class="cardback off" onclick=cardclicked(2)></div></div>
+<div class="box"><div id="card3" class="cardback off" onclick=cardclicked(3)></div></div>
+<div class="box"><div id="card4" class="cardback off" onclick=cardclicked(4)></div></div>
+<div class="box"><div id="card5" class="cardback off" onclick=cardclicked(5)></div></div>
+<div class="box"><div id="card6" class="cardback off" onclick=cardclicked(6)></div></div>
+<div class="box"><div id="card7" class="cardback off" onclick=cardclicked(7)></div></div>
+<div class="box"><div id="card8" class="cardback off" onclick=cardclicked(8)></div></div>
+<div class="box"><div id="card9" class="cardback off" onclick=cardclicked(9)></div></div>
+
+</div>
+
+<h2 class="instructions">Instructions</h2>
+<p class="instructions">Take turns clicking boxes and try to get 3 in a row!</p>
+<div class="instructions" id="restart"></div>
+
+<script>
+
+	document.getElementById("nextplayer").innerHTML = "X";
+	var currentplayer = "X";
+	var gameOver = false;
+
+	function cardclicked(cardid, activated) {
+	
+		if (document.getElementById("card" + cardid).classList.contains("off") && gameOver == false) {
+
+			if (currentplayer == "X") {
+				document.getElementById('card' + cardid).innerHTML = "X";
+				document.getElementById("nextplayer").innerHTML = "O";
+				currentplayer = "O";
+				document.getElementById("card" + cardid).classList.remove("off");
+					evaluate();
+				return;
+			}
+			
+			if (currentplayer == "O") {
+				document.getElementById('card' + cardid).innerHTML = "O";
+				document.getElementById("nextplayer").innerHTML = "X";
+				currentplayer = "X";
+				document.getElementById("card" + cardid).classList.remove("off");
+				evaluate();
+				return;
+			}
+
+		}
+		
+	}
+
+	function evaluate() {
+		var c1 = document.getElementById('card1').innerHTML
+		var c2 = document.getElementById('card2').innerHTML
+		var c3 = document.getElementById('card3').innerHTML
+		var c4 = document.getElementById('card4').innerHTML
+		var c5 = document.getElementById('card5').innerHTML
+		var c6 = document.getElementById('card6').innerHTML
+		var c7 = document.getElementById('card7').innerHTML
+		var c8 = document.getElementById('card8').innerHTML
+		var c9 = document.getElementById('card9').innerHTML
+
+
+		if (c1 == c2 && c1 == c3 && c1 !== "") {
+			endGame(false);
+		}
+		if (c4 == c5 && c4 == c6 && c4 !== "") {
+			endGame(false);
+		}
+		if (c7 == c8 && c7 == c9 && c7 !== "") {
+			endGame(false);
+		}
+		if (c1 == c4 && c1 == c7 && c1 !== "") {
+			endGame(false);	
+		}
+		if (c2 == c5 && c2 == c8 && c2 !== "") {
+			endGame(false);	
+		}
+		if (c3 == c6 && c3 == c9 && c3 !== "") {
+			endGame(false);	
+		}
+		if (c1 == c5 && c1 == c9 && c1 !== "") {
+			endGame(false);
+		}
+		if (c3 == c5 && c3 == c7 && c3 !== "") {
+			endGame(false);	
+		}
+		if (c1 !== "" && c2 !== "" && c3 !== "" && c4 !== "" && c5 !== "" && c6 !== "" && c7 !== "" && c8 !== "" && c9 !== "" && gameOver !== true) {
+			endGame(true);
+		}
+	}
+
+	function endGame(tie) {
+		if (tie == false) {
+			if (currentplayer == "X") {currentplayer = "O";}
+			else {currentplayer = "X";}
+			document.getElementById("nextplayer").innerHTML = currentplayer + " Wins!";
+			gameOver = true;
+			document.getElementById('restart').innerHTML += "<button onclick='reload()'>Start Over</button>";
+		}
+
+		if (tie == true) {
+			document.getElementById("nextplayer").innerHTML = "It's a tie!";
+			gameOver = true;
+			document.getElementById('restart').innerHTML += "<button onclick='reload()'>Start Over</button>";
+		}
+	}
+
+	function reload() {
+		location.reload();
+	}
+</script>
+
+</body>
+
+</html>

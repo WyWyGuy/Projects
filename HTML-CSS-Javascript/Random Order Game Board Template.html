@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Tic Tac Toe</title>
+
+
+<style type="text/css" media="all">
+
+.box {
+	border-width:4px;
+	border-style:solid;
+	border-color:black;
+	height:100px;
+	width:100px;
+	text-align:center;
+	float:left;
+}
+
+.board {
+	border-width:4px;
+	border-style:solid;
+	border-color:black;
+	height:324px;
+	width:324px;
+	margin: 0 auto;
+	text-align:center;
+}
+
+.cardback {
+	height:100px;
+	width:100px;
+	background-color:white;
+}
+
+</style>
+
+
+
+</head>
+
+
+
+<body>
+
+<div class="board">
+
+<div class="box" id="1">r1c1</div>
+<div class="box" id="2">r1c2</div>
+<div class="box" id="3">r1c3</div>
+<div class="box" id="4">r1c4</div>
+<div class="box" id="5">r2c1</div>
+<div class="box" id="6">r2c2</div>
+<div class="box" id="7">r2c3</div>
+<div class="box" id="8">r2c4</div>
+<div class="box" id="9">r3c1</div>
+
+</div>
+
+<script>
+
+//Set Up Board
+	var identify = 1;
+	var starting = 9;
+	
+	do {
+	var random = Math.floor(Math.random() * starting) + 1;
+	
+	document.getElementById(random).innerHTML = '<div id="card' + identify + '" class="cardback" onclick=cardclicked' + identify + '()></div>';
+	document.getElementById(random).id = "complete" + identify;
+	//<div id="card#" class="cardback" onclick=cardclicked#()></div>
+	
+	var todo = starting - random;
+	
+	var number = 1;
+	var repeats = 0;
+	do {
+		
+	var next = random + number;
+		
+	if (next <= starting) {
+	document.getElementById(next).id = next - 1;
+	}
+	
+	var number = number + 1;
+	var repeats = repeats + 1;
+	} while (repeats < todo);
+	
+	var starting = starting - 1;
+	var identify = identify + 1;
+	} while (starting > 0);
+
+
+//Game functionality
+	function cardclicked1() {
+		document.getElementById('card1').innerHTML = "itworks!";
+	}
+	
+	function cardclicked2() {
+		document.getElementById('card2').innerHTML = "itworks!";
+	}
+	
+	function cardclicked3() {
+		document.getElementById('card3').innerHTML = "itworks!";
+	}
+	
+	function cardclicked4() {
+		document.getElementById('card4').innerHTML = "itworks!";
+	}
+	
+	function cardclicked5() {
+		document.getElementById('card5').innerHTML = "itworks!";
+	}
+	
+	function cardclicked6() {
+		document.getElementById('card6').innerHTML = "itworks!";
+	}
+	
+	function cardclicked7() {
+		document.getElementById('card7').innerHTML = "itworks!";
+	}
+	
+	function cardclicked8() {
+		document.getElementById('card8').innerHTML = "itworks!";
+	}
+	
+	function cardclicked9() {
+		document.getElementById('card9').innerHTML = "itworks!";
+	}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Randomizer</title>
+
+
+<style type="text/css" media="all">
+
+</style>
+
+
+
+</head>
+
+
+
+<body>
+
+	<p>Minimum: <input type="number" onfocus="this.value=''" id="inputmin"></p>
+	<p>Maximim: <input type="number" onfocus="this.value=''" id="inputmax"></p>
+	<p>With Replacement: <input type="checkbox" checked="checked" onfocus="this.value=''" id="replace"></p>
+	<p>How Many Numbers: <input type="number" onfocus="this.value=''" id="choose"></p>
+	<button type="button" onclick=randomize()>Randomize!</button>
+<br/>
+<br/>
+	<p id="answer"></p>
+	<br/>
+	<p id="dev"></p>
+	<br/>
+	<p id="dev2"></p>
+	
+<script>
+		
+	var myArray = [];
+		
+		function randomize() {
+	var min = Number(document.getElementById('inputmin').value);
+	var max = Number(document.getElementById('inputmax').value);
+	var choose = Number(document.getElementById('choose').value);
+	var replace = Number(document.getElementById('replace').checked);
+	var counter = Number(document.getElementById('choose').value);
+	var inside = Number((+max - min + +1));
+	var possible = Number(max - min + +1);
+	
+//Make sure maximum is more than minimum
+
+		if (max < min) {
+		document.getElementById('answer').innerHTML = "Maximum must be larger or equal to minimum";
+	}
+	else {
+	
+//Make sure there are enough answers (if replace is off)
+
+		if ((replace == "0" && choose > possible)) {
+			document.getElementById('answer').innerHTML = "You can't choose more numbers than there are possible";
+	}
+	
+	else { 
+	
+//Randomize!!!
+
+	if (replace == "0") {
+		
+		myArray = [];
+		
+			var text = "";
+			do {
+				var random = Math.floor(Math.random() * (inside) ) + +min;
+				var isitin = myArray.includes(random);
+					if (isitin == false) {
+						myArray.push(random);
+						text += random + ", ";
+						var counter = counter - 1;
+					}
+				}
+			while (counter > 0);
+		document.getElementById('answer').innerHTML = text;
+
+	}
+//Randomize (Easy Version)	
+		
+	else {
+	var text = "";
+	do {
+		var random = Math.floor(Math.random() * (inside) ) + +min;
+		text += random + ", ";
+		var counter = counter - 1;
+	}
+	while (counter > 0);
+		
+//Display response
+
+	document.getElementById('answer').innerHTML = text;
+	
+	}
+	}
+	}
+		//document.getElementById('dev').innerHTML = "max:" + max + "min:" + min + "possible:" + possible + "choose:" + choose + "replace:" + replace + "counter:" + counter;
+		//document.getElementById('dev2').innerHTML = "thearray: " + myArray;
+	}
+</script>
+
+</body>
+
+</html>

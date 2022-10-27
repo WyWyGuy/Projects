@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Word Combiner</title>
+
+
+<style type="text/css" media="all">
+
+</style>
+
+
+
+</head>
+
+
+
+<body>
+
+Word 1: <input type="text" onfocus="this.value=''" id="word1" maxlength="" value="abc">
+<br/>
+<br/>
+Word 2: <input type="text" onfocus="this.value=''" id="word2" maxlength="" value="xyz">
+
+<p id="deleteme"><button onclick="combine()">Combine!</button></p>
+
+<p id="response"></p>
+
+	<script>
+	
+		function reverseString(str) {
+		return str.split("").reverse().join("");
+		}
+		
+		function combine() {
+			var oneword = String(document.getElementById('word1').value);
+			var twoword = String(document.getElementById('word2').value);
+			var twoword = reverseString(twoword);
+			var onelength = oneword.length;
+			var twolength = twoword.length;
+			var text = "";
+		
+		//First half - word 1 plus word 2
+			var parts = onelength;
+			var onenumber = 1;
+			do {
+				var start = oneword.split('',onenumber);
+				var items = twolength;
+				var twonumber = 1;
+					do {
+						var end = String(twoword.split('',twonumber));
+						var end = reverseString(end);
+							var input = start + end;
+							var twonumber = twonumber + 1;
+							text += input + "<br/>";
+							text = String(text);
+								text = text.replace(/,/g,"")
+								document.getElementById('response').innerHTML = text;
+							
+				var items = items - 1;
+				}
+				while (items > 0);
+			var onenumber = onenumber + 1;	
+			var parts = parts - 1;
+			}
+			while (parts > 0);
+		
+		//Second half - word 2 plus word 1
+			var oneword = String(document.getElementById('word1').value);
+			var oneword = reverseString(oneword);
+			var twoword = String(document.getElementById('word2').value);
+			var onelength = oneword.length;
+			var twolength = twoword.length;
+			
+			var parts = twolength;
+			var twonumber = 1;
+			do {
+				var start = twoword.split('',twonumber);
+				var items = onelength;
+				var onenumber = 1;
+					do {
+					var end = String(oneword.split('',onenumber));
+					var end = reverseString(end);
+						var input = start + end;
+						var onenumber = onenumber + 1;
+						text += input + "<br/>";
+						text = String(text);
+							text = text.replace(/,/g,"")
+							document.getElementById('response').innerHTML = text;
+					
+					var items = items - 1;
+					}
+					while (items > 0);
+				var twonumber = twonumber + 1;
+				var parts = parts - 1;
+			}
+			while (parts > 0);
+			
+		document.getElementById('response').innerHTML = text;
+		}		
+	</script>
+</body>
+
+</html>

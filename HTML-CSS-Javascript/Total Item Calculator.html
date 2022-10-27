@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Item Calculator</title>
+
+<style type="text/css" media="all">
+
+
+
+</style>
+
+</head>
+
+
+<body>
+	
+	<h1>Click for if a percentage point is added</h1>
+	<button type="button" onclick=yes()>Yes</button>
+	<button type="button" onclick=no()>No</button>
+
+	<p id="response"></p>
+	
+	<script>
+	
+		var points = 0;
+		var total = 0;
+		var percentage = 0;
+		var items = 0;
+		
+		function yes() {
+			points += 1;
+			total += 1;
+			process();
+		}
+		
+		function no() {
+			total += 1;
+			process();
+		}
+		
+		function process() {
+			percentage = points/total;
+			items = 100/percentage;
+			document.getElementById('response').innerHTML = "Yes: " + points + ", Total: " + total + "<br/>" + 
+			"Percentage: " + ((Math.round(percentage*1000))/10)	 + "%, Items: " + Math.round(items);
+		}
+		
+	</script>
+	
+</body>
+
+</html>
